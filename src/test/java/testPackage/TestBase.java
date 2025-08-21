@@ -10,14 +10,16 @@ public class TestBase {
     Bot bot;
     SHAFT.TestData.JSON testData;
 
+
     @BeforeClass
     public void beforeClass() {
-        testData = new SHAFT.TestData.JSON("simpleJSON.json");
+        testData = new SHAFT.TestData.JSON("newUserData.json");
     }
 
     @BeforeMethod
     public void setUp() {
         bot = new Bot();
+       // bot.driver.browser().navigateToURL(Constants.BASE_URL)
     }
 
     @AfterMethod

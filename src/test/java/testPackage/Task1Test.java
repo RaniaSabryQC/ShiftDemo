@@ -1,28 +1,33 @@
 package testPackage;
 
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DynamicHTML;
+import pages.RegisterPage;
 
-public class Task1Test extends TestBase{
-
-    @Test
-    public void navigateToDuckduckgoAndCheckPageTitle() {
-        // Navigate to the DuckDuckGo page and assert the title
-        bot.driver.browser().navigateToURL(new DynamicHTML(bot).url)
-                .and().assertThat().title().contains(testData.getTestData("expectedTitle"));
-    }
+public class Task1Test extends TestBase {
 
     @Test
-    public void navigateToDuckduckgoAndCheckLogoIsDisplay() {
-        // Navigate to the DuckDuckGo page and assert the logo is displayed correctly
-        DynamicHTML dynamicHTML=new DynamicHTML(bot);
-        bot.driver.browser().navigateToURL(dynamicHTML.url)
-                .and().assertThat().equals(dynamicHTML.navigateToDuckDuckGoAndCheckLogoIsDisplayed());
+    public void registerNewUser() {
+        RegisterPage registerPage = new RegisterPage(bot).navigateToRegisterPage();
+        Assert.assertTrue(registerPage.isRegisterTitleDisplayed());
+        registerPage.signUp(testData.getTestData("name"), testData.getTestData("email")).
+                completeRegistrationForm(testData.getTestData("password"),
+                        testData.getTestData("day"),
+                        testData.getTestData("month"),
+                        testData.getTestData("year"),
+                        testData.getTestData("firstName"),
+                        testData.getTestData("lastName"),
+                        testData.getTestData("company"),
+                        testData.getTestData("address1"),
+                        testData.getTestData("address2"),
+                        testData.getTestData("country"),
+                        testData.getTestData("state"),
+                        testData.getTestData("city"),
+                        testData.getTestData("zipcode"),
+                        testData.getTestData("mobileNumber"));
+        Assert.assertTrue(registerPage.isAccountCreatedMessageDisplayed());
     }
 
-    @Test
-    public void navigateToDuckduckgoAndCheckLogoIsDisplayCorrectly(){
-        DynamicHTML dynamicHTML=new DynamicHTML(bot);
-        bot.driver.browser().navigateToURL(dynamicHTML.url).and().assertThat().equals(dynamicHTML.isLogoDisplayCorrectly());
-    }
+
 }

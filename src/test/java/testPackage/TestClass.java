@@ -45,13 +45,13 @@ public class TestClass {
         testData = new SHAFT.TestData.JSON("simpleJSON.json");
     }
 
-    @BeforeMethod
-    public void beforeMethod() {
-        driver = new SHAFT.GUI.WebDriver();
-    }
-
-    @AfterMethod
-    public void afterMethod(){
-        driver.quit();
-    }
+//    @BeforeMethod
+//    public void beforeMethod() {
+//        driver = new SHAFT.GUI.WebDriver();
+//    }
+//
+//    @AfterMethod
+//    public void afterMethod(){
+//        driver.quit();
+//    }
 }
