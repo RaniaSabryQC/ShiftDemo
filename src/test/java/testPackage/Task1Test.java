@@ -13,9 +13,16 @@ public class Task1Test extends TestBase{
     }
 
     @Test
-    public void navigateToDuckduckgoAndCheckLogo() {
+    public void navigateToDuckduckgoAndCheckLogoIsDisplay() {
         // Navigate to the DuckDuckGo page and assert the logo is displayed correctly
-        bot.driver.browser().navigateToURL(new DynamicHTML(bot).url).
-                and().element().assertThat(new DynamicHTML(bot).logoLocator).matchesReferenceImage();
+        DynamicHTML dynamicHTML=new DynamicHTML(bot);
+        bot.driver.browser().navigateToURL(dynamicHTML.url)
+                .and().assertThat().equals(dynamicHTML.navigateToDuckDuckGoAndCheckLogoIsDisplayed());
+    }
+
+    @Test
+    public void navigateToDuckduckgoAndCheckLogoIsDisplayCorrectly(){
+        DynamicHTML dynamicHTML=new DynamicHTML(bot);
+        bot.driver.browser().navigateToURL(dynamicHTML.url).and().assertThat().equals(dynamicHTML.isLogoDisplayCorrectly());
     }
 }
