@@ -1,0 +1,33 @@
+
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                        Starting Execution: '1 out of 1' test cases in the current suite                                        
+                                         Test Method: 'testPackage.Task1Test.navigateToRegisterNewUser'                                         
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[ReportManager] Target URL: "https://automationexercise.com/" @27-08-2025 00:13:11.0796 AM
+[ReportManager] Initial URL: "about:blank" @27-08-2025 00:13:11.0820 AM
+[ReportManager] Navigate to url "https://automationexercise.com/". @27-08-2025 00:13:15.0059 AM
+[ReportManager] Click " Signup / Login" @27-08-2025 00:13:15.0231 AM
+[ReportManager] Get  text "New User Signup!" @27-08-2025 00:13:16.0406 AM
+[ReportManager] Type "Name" @27-08-2025 00:13:16.0548 AM
+[ReportManager] Type "Email Address" @27-08-2025 00:13:16.0648 AM
+[ReportManager] Click "Signup" @27-08-2025 00:13:16.0824 AM
+[ReportManager] Click "Mr." @27-08-2025 00:13:18.0582 AM
+[ReportManager] Type "Password *" @27-08-2025 00:13:18.0683 AM
+[ReportManager] Select "5" from "By.xpath: //select[@id='days']". @27-08-2025 00:13:19.0969 AM
+[ReportManager] Select "May" from "By.xpath: //select[@id='months']". @27-08-2025 00:13:20.0413 AM
+[ReportManager] Select "2020" from "By.xpath: //select[@id='years']". @27-08-2025 00:13:20.0799 AM
+[ReportManager] Click "Sign up for our newsletter!" @27-08-2025 00:13:20.0904 AM
+[ReportManager] Click "Receive special offers from our partners!" @27-08-2025 00:13:20.0985 AM
+[ReportManager] Type "First name *" @27-08-2025 00:13:21.0085 AM
+[ReportManager] Type "Last name *" @27-08-2025 00:13:21.0208 AM
+[ReportManager] Type "Company" @27-08-2025 00:13:21.0323 AM
+[ReportManager] Type "Address * (Street address, P.O. Box, Company name, etc.)" @27-08-2025 00:13:21.0432 AM
+[ReportManager] Type "Address 2" @27-08-2025 00:13:21.0560 AM
+[ReportManager] Select "Canada" from "Country *". @27-08-2025 00:13:21.0869 AM
+[ReportManager] Type "State *" @27-08-2025 00:13:21.0994 AM
+[ReportManager] Type "City * Zipcode *" @27-08-2025 00:13:22.0107 AM
+[ReportManager] Type "By.xpath: //input[@id='zipcode']" @27-08-2025 00:13:22.0210 AM
+[ReportManager] Type "Mobile Number *" @27-08-2025 00:13:22.0337 AM
+[ReportManager] Click "Create Account" @27-08-2025 00:13:22.0434 AM
+[ReportManager] Get  text "ACCOUNT CREATED!" @27-08-2025 00:13:25.0329 AM
