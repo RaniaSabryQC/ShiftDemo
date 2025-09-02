@@ -9,25 +9,19 @@ import java.time.Duration;
 public class Bot {
 
     public SHAFT.GUI.WebDriver driver;
-  //  FluentWait<SHAFT.GUI.WebDriver> wait;
+
 
 
     public Bot(){
         driver = new SHAFT.GUI.WebDriver();
-//        wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10))
-//                .pollingEvery(Duration.ofMillis(500))
-//                .ignoring(Exception.class);
     }
 
     public boolean isDisplayed(By locator) {
-      //  return wait.until(d ->
-            //    driver.browser().and().element().get().isDisplayed(locator));
+
         return driver.browser().and().element().get().isDisplayed(locator);
     }
 
     public boolean isLogoDisplayCorrectly(By locator) {
-//         wait.until(d ->
-//                driver.browser().and().element().assertThat(locator).matchesReferenceImage());
         driver.browser().and().element().assertThat(locator).matchesReferenceImage();
          return true;
     }

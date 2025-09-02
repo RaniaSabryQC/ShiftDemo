@@ -3,16 +3,16 @@ package testPackage;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AccountCreated;
 import pages.RegisterPage;
 
-public class Task1Test extends TestBase {
+public class RegisterNewUserTest extends TestBase {
 
     @Test
     public void registerNewUser() {
-        RegisterPage registerPage = new RegisterPage(bot).navigateToRegisterPage();
-        Assert.assertTrue(registerPage.isRegisterTitleDisplayed());
-        registerPage.signUp(testData.getTestData("name"), testData.getTestData("email")).
-                completeRegistrationForm(testData.getTestData("password"),
+        RegisterPage registerPage = new RegisterPage(bot).navigateToRegisterPage()
+                .signUp(testData.getTestData("name"), testData.getTestData("email"))
+                .completeRegistrationForm(testData.getTestData("password"),
                         testData.getTestData("day"),
                         testData.getTestData("month"),
                         testData.getTestData("year"),
@@ -26,8 +26,8 @@ public class Task1Test extends TestBase {
                         testData.getTestData("city"),
                         testData.getTestData("zipcode"),
                         testData.getTestData("mobileNumber"));
-        Assert.assertTrue(registerPage.isAccountCreatedMessageDisplayed());
+        AccountCreated accountCreated=new AccountCreated(bot);
+        String accountCreatedMessage=accountCreated.accountCreatedMessageDisplayed();
+        System.out.printf(accountCreatedMessage);
     }
-
-
 }

@@ -31,8 +31,6 @@ public class RegisterPage {
     By zipcodeInputField = By.xpath("//input[@id='zipcode']");
     By mobileNumberInputField = By.xpath("//input[@id='mobile_number']");
     By createAccountButton = By.xpath("//button[@data-qa='create-account']");
-    By accountCreatedMessage = By.xpath("//h2[@data-qa='account-created']");
-    By continueButton = By.xpath("//a[@data-qa='continue-button']");
 
 
     public RegisterPage(Bot bot) {
@@ -75,10 +73,5 @@ public class RegisterPage {
                 .and().element().click(createAccountButton);
         return this;
     }
-
-    public boolean isAccountCreatedMessageDisplayed() {
-        return bot.driver.browser().and().element().get().text(accountCreatedMessage).equals("ACCOUNT CREATED!");
-    }
-
 
 }
