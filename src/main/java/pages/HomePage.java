@@ -9,14 +9,15 @@ public class HomePage {
     By signupLink=By.xpath("//a[contains(text(),' Signup / Login')]");
 
     public HomePage(Bot bot){
-        this.bot=new Bot();
+        this.bot=bot;
     }
 
-    public RegisterPage navigateToRegisterPage(){
+    public RegisterPage navigateAndclickToRegisterPage(){
         bot.driver.browser().navigateToURL(Constants.BASE_URL).and().element().click(signupLink);
         return new RegisterPage(bot);
-       /// bot.driver.browser().and().element().click(signupLink);
+
     }
+
 
 
 }

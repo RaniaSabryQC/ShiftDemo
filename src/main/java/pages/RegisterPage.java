@@ -38,7 +38,7 @@ public class RegisterPage {
     public RegisterPage(Bot bot) {
         this.bot = bot;
     }
-    public  RegisterPage navigateToRegisterPage(){
+    public  RegisterPage navigateAndClickToRegisterPage(){
         bot.driver.browser().navigateToURL(Constants.BASE_URL).and().element().click(signupLink);
         return this;
     }
@@ -51,6 +51,13 @@ public class RegisterPage {
                 .and().element().click(signupButton);
         return this;
     }
+    public String validateEmailRequiredMessage() {
+        bot.driver.browser().and().element().click(signupButton);
+        String message = bot.driver.getDriver().findElement(emailInputField).getAttribute("validationMessage");
+        System.out.println(message);
+        return message;
+    }
+
     public RegisterPage completeRegistrationForm(String password, String day, String month, String year,
                                         String firstName, String lastName, String company,
                                         String address1, String address2, String country,
@@ -73,12 +80,14 @@ public class RegisterPage {
                 .and().element().type(zipcodeInputField, zipcode)
                 .and().element().type(mobileNumberInputField, mobileNumber)
                 .and().element().click(createAccountButton);
-        return this;
+//        bot.driver.async().element().click(titleRadioButton).type(passwordInputField, password)
+//                .select(daysDropdown, day).select(monthsDropdown, month).select(yearsDropdown, year)
+//                .click(newsletterCheckbox).click(offersCheckbox).type(firstNameInputField, firstName)
+//                .type(lastNameInputField, lastName).type(companyInputField, company)
+//                .type(address1InputField, address1).type(address2InputField, address2)
+//                .select(countryDropdown, country).type(stateInputField, state).type(cityInputField, city)
+//                .type(zipcodeInputField, zipcode).type(mobileNumberInputField, mobileNumber)
+//                .click(createAccountButton);
+      return this;
     }
-
-    public boolean isAccountCreatedMessageDisplayed() {
-        return bot.driver.browser().and().element().get().text(accountCreatedMessage).equals("ACCOUNT CREATED!");
-    }
-
-
 }
