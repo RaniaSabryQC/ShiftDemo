@@ -1,0 +1,7 @@
+[ReportManager] Post processing some properties to support platforms-specific restrictions. @02-09-2025 20:11:33.0658 PM
+[ReportManager] Setting "targetOperatingSystem" property with "windows". @02-09-2025 20:11:33.0676 PM
+[ReportManager] Setting "screenshotParams_scalingFactor" property with "2.0". @02-09-2025 20:11:33.0782 PM
+[ReportManager] Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-debugging-port=65127, --start-maximized], extensions: []}, pageLoadStrategy: none, timeouts: {pageLoad: 30000, script: 30000}, webSocketUrl: true} @02-09-2025 20:11:33.0804 PM
+[ReportManager] Attempting to run locally on: "Windows | Chrome". @02-09-2025 20:11:33.0806 PM
+[ReportManager] Identifying OS/Driver combination. Please note that if a new browser/driver executable will be downloaded it may take some time depending on your connection... @02-09-2025 20:11:33.0807 PM
+[ReportManager] Successfully Opened: "Windows | Chrome". @02-09-2025 20:11:35.0081 PM
