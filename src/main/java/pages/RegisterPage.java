@@ -1,15 +1,15 @@
 package pages;
 
 import engine.Bot;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import utils.Constants;
+import utils.UserData;
 
 public class RegisterPage {
     Bot bot;
 
-    By signupLink=By.xpath("//a[contains(text(),' Signup / Login')]");
-    By registerTitle = By.xpath("//div[@class='signup-form']/h2");
-    By logoImage = By.xpath("//div[@class='logo pull-left']/a/img");
+    By signupLink = By.xpath("//a[contains(text(),' Signup / Login')]");
     By nameInputField = By.xpath("//input[@data-qa='signup-name']");
     By emailInputField = By.xpath("//input[@data-qa='signup-email']");
     By signupButton = By.xpath("//button[@data-qa='signup-button']");
@@ -31,37 +31,28 @@ public class RegisterPage {
     By zipcodeInputField = By.xpath("//input[@id='zipcode']");
     By mobileNumberInputField = By.xpath("//input[@id='mobile_number']");
     By createAccountButton = By.xpath("//button[@data-qa='create-account']");
-    By accountCreatedMessage = By.xpath("//h2[@data-qa='account-created']");
-    By continueButton = By.xpath("//a[@data-qa='continue-button']");
 
 
     public RegisterPage(Bot bot) {
         this.bot = bot;
     }
-    public  RegisterPage navigateAndClickToRegisterPage(){
+
+    public RegisterPage navigateToRegisterPage() {
         bot.driver.browser().navigateToURL(Constants.BASE_URL).and().element().click(signupLink);
         return this;
     }
-    public boolean isRegisterTitleDisplayed() {
-        return bot.driver.browser().and().element().get().text(registerTitle).equals("New User Signup!");
-    }
+
     public RegisterPage signUp(String name, String email) {
         bot.driver.browser().and().element().type(nameInputField, name)
                 .and().element().type(emailInputField, email)
                 .and().element().click(signupButton);
         return this;
     }
-    public String validateEmailRequiredMessage() {
-        bot.driver.browser().and().element().click(signupButton);
-        String message = bot.driver.getDriver().findElement(emailInputField).getAttribute("validationMessage");
-        System.out.println(message);
-        return message;
-    }
 
     public RegisterPage completeRegistrationForm(String password, String day, String month, String year,
-                                        String firstName, String lastName, String company,
-                                        String address1, String address2, String country,
-                                        String state, String city, String zipcode, String mobileNumber) {
+                                                 String firstName, String lastName, String company,
+                                                 String address1, String address2, String country,
+                                                 String state, String city, String zipcode, String mobileNumber) {
         bot.driver.browser().and().element().click(titleRadioButton)
                 .and().element().type(passwordInputField, password)
                 .and().element().select(daysDropdown, day)
@@ -80,14 +71,27 @@ public class RegisterPage {
                 .and().element().type(zipcodeInputField, zipcode)
                 .and().element().type(mobileNumberInputField, mobileNumber)
                 .and().element().click(createAccountButton);
-//        bot.driver.async().element().click(titleRadioButton).type(passwordInputField, password)
-//                .select(daysDropdown, day).select(monthsDropdown, month).select(yearsDropdown, year)
-//                .click(newsletterCheckbox).click(offersCheckbox).type(firstNameInputField, firstName)
-//                .type(lastNameInputField, lastName).type(companyInputField, company)
-//                .type(address1InputField, address1).type(address2InputField, address2)
-//                .select(countryDropdown, country).type(stateInputField, state).type(cityInputField, city)
-//                .type(zipcodeInputField, zipcode).type(mobileNumberInputField, mobileNumber)
-//                .click(createAccountButton);
-      return this;
+        return this;
+    }
+
+    public void completeRegisterForm(@NotNull UserData userData) {
+        bot.driver.browser().and().element().click(titleRadioButton)
+                .and().element().type(passwordInputField, userData.getPassword())
+                .and().element().select(daysDropdown, userData.getDay())
+                .and().element().select(monthsDropdown, userData.getMonth())
+                .and().element().select(yearsDropdown, userData.getYear())
+                .and().element().click(newsletterCheckbox)
+                .and().element().click(offersCheckbox)
+                .and().element().type(firstNameInputField, userData.getFirstName())
+                .and().element().type(lastNameInputField, userData.getLastName())
+                .and().element().type(companyInputField, userData.getCompany())
+                .and().element().type(address1InputField, userData.getAddress1())
+                .and().element().type(address2InputField, userData.getAddress2())
+                .and().element().select(countryDropdown, userData.getCountry())
+                .and().element().type(stateInputField, userData.getState())
+                .and().element().type(cityInputField, userData.getCity())
+                .and().element().type(zipcodeInputField, userData.getZipcode())
+                .and().element().type(mobileNumberInputField, userData.getMobileNumber())
+                .and().element().click(createAccountButton);
     }
 }

@@ -19,7 +19,6 @@ public class TestBase {
     @BeforeMethod
     public void setUp() {
         bot = new Bot();
-       // bot.driver.browser().navigateToURL(Constants.BASE_URL)
     }
 
     @AfterMethod

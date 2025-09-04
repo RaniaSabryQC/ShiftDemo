@@ -8,13 +8,16 @@ import java.time.Duration;
 
 public class Bot {
 
-     public SHAFT.GUI.WebDriver driver;
+    public SHAFT.GUI.WebDriver driver;
+
+
 
     public Bot(){
         driver = new SHAFT.GUI.WebDriver();
     }
 
     public boolean isDisplayed(By locator) {
+
         return driver.browser().and().element().get().isDisplayed(locator);
     }
 
@@ -22,6 +25,7 @@ public class Bot {
         driver.browser().and().element().assertThat(locator).matchesReferenceImage();
          return true;
     }
+
 
     public void quit() {
         if (driver != null) {
