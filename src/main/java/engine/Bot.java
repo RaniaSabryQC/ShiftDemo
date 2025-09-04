@@ -2,9 +2,7 @@ package engine;
 
 import com.shaft.driver.SHAFT;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.FluentWait;
 
-import java.time.Duration;
 
 public class Bot {
 

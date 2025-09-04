@@ -1,15 +1,16 @@
 package testPackage;
 
+
 import org.testng.annotations.Test;
-import pages.AccountCreatedPage;
 import pages.RegisterPage;
+import data.TestDataFactory;
 import utils.UserData;
 
 public class RegisterNewUserTest extends TestBase {
 
     @Test
     public void registerNewUserFromNormalMethod() {
-        RegisterPage registerPage = new RegisterPage(bot).navigateToRegisterPage()
+        new RegisterPage(bot).navigateToRegisterPage()
                 .signUp(testData.getTestData("name"), testData.getTestData("email"))
                 .completeRegistrationForm(testData.getTestData("password"), testData.getTestData("day"), testData.getTestData("month"),
                         testData.getTestData("year"), testData.getTestData("firstName"), testData.getTestData("lastName"),
@@ -19,26 +20,11 @@ public class RegisterNewUserTest extends TestBase {
         bot.driver.browser().and().assertThat().url().contains("account_created");
     }
 
+    // Using UserData class & Test data factory to hold and build user information
+
     @Test
     public void registerNewUserFromUserDataClass() {
-        // userData optimize code
-        UserData user = new UserData();
-        user.setName(testData.getTestData("name"));
-        user.setEmail(testData.getTestData("email"));
-        user.setPassword(testData.getTestData("password"));
-        user.setDay(testData.getTestData("day"));
-        user.setMonth(testData.getTestData("month"));
-        user.setYear(testData.getTestData("year"));
-        user.setFirstName(testData.getTestData("firstName"));
-        user.setLastName(testData.getTestData("lastName"));
-        user.setCompany(testData.getTestData("company"));
-        user.setAddress1(testData.getTestData("address1"));
-        user.setAddress2(testData.getTestData("address2"));
-        user.setCountry(testData.getTestData("country"));
-        user.setState(testData.getTestData("state"));
-        user.setCity(testData.getTestData("city"));
-        user.setZipcode(testData.getTestData("zipcode"));
-        user.setMobileNumber(testData.getTestData("mobileNumber"));
+        UserData user = TestDataFactory.createValidUser(testData);
         new RegisterPage(bot).navigateToRegisterPage()
                 .signUp(user.getName(), user.getEmail())
                 .completeRegisterForm(user);

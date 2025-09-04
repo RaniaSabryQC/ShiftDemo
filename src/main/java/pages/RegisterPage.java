@@ -1,7 +1,6 @@
 package pages;
 
 import engine.Bot;
-import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import utils.Constants;
 import utils.UserData;
@@ -44,12 +43,22 @@ public class RegisterPage {
 
     public RegisterPage signUp(String name, String email) {
         bot.driver.browser().and().element().type(nameInputField, name)
-                .and().element().type(emailInputField, email)
+                .and().element().type(emailInputField,generateUniqueEmail(email))
                 .and().element().click(signupButton);
         return this;
     }
+    /**
+     * CRITICAL: Replace {timestamp} with actual timestamp to ensure unique email addresses.
+     */
+    public static String generateUniqueEmail(String emailTemplate) {
+        if (emailTemplate.contains("{timestamp}")) {
+            long timestamp = System.currentTimeMillis();
+            return emailTemplate.replace("{timestamp}", String.valueOf(timestamp));
+        }
+        return emailTemplate;
+    }
 
-    public RegisterPage completeRegistrationForm(String password, String day, String month, String year,
+    public void completeRegistrationForm(String password, String day, String month, String year,
                                                  String firstName, String lastName, String company,
                                                  String address1, String address2, String country,
                                                  String state, String city, String zipcode, String mobileNumber) {
@@ -71,10 +80,9 @@ public class RegisterPage {
                 .and().element().type(zipcodeInputField, zipcode)
                 .and().element().type(mobileNumberInputField, mobileNumber)
                 .and().element().click(createAccountButton);
-        return this;
     }
 
-    public void completeRegisterForm(@NotNull UserData userData) {
+    public void completeRegisterForm(UserData userData) {
         bot.driver.browser().and().element().click(titleRadioButton)
                 .and().element().type(passwordInputField, userData.getPassword())
                 .and().element().select(daysDropdown, userData.getDay())

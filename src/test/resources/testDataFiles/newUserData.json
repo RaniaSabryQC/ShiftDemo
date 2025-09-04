@@ -1,6 +1,6 @@
 {
   "name":"John",
-  "email": "john567890@john.com",
+  "email":"john.doe.{timestamp}@test.com",
   "password": "123456",
   "day":"5",
   "month":"May",
