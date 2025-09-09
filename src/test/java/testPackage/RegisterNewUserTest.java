@@ -6,6 +6,9 @@ import pages.RegisterPage;
 import data.TestDataFactory;
 import utils.UserData;
 
+import java.io.IOException;
+import java.util.List;
+
 public class RegisterNewUserTest extends TestBase {
 
     @Test
@@ -23,8 +26,11 @@ public class RegisterNewUserTest extends TestBase {
     // Using UserData class & Test data factory to hold and build user information
 
     @Test
-    public void registerNewUserFromUserDataClass() {
-        UserData user = TestDataFactory.createValidUser(testData);
+    public void registerNewUserFromUserDataClass() throws IOException {
+       // UserData user = TestDataFactory.readJsonFromFile(testData, UserData.class);
+        List<UserData> users = TestDataFactory.readJsonFromFile(testData, UserData.class);
+        UserData user = users.get(0);
+        System.out.println("RAW JSON: " + testData.getTestData(""));
         new RegisterPage(bot).navigateToRegisterPage()
                 .signUp(user.getName(), user.getEmail())
                 .completeRegisterForm(user);

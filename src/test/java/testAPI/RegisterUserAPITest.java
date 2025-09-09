@@ -24,6 +24,7 @@ public class RegisterUserAPITest {
 
     @Test
     public void searchProductWithoutParameter() {
+
         AllProductListAPI allProductListAPI = new AllProductListAPI(new api.Base.BaseAPI());
         Response response = allProductListAPI.searchProductWithoutParameter();
         Assert.assertEquals(response.getStatusCode(), 200);

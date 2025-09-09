@@ -1,9 +1,0 @@
-
-[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
-                                        Starting Execution: '1 out of 1' test cases in the current suite                                        
-                                    Test Method: 'testAPI.RegisterUserAPITest.searchProductWithoutParameter'                                    
-------------------------------------------------------------------------------------------------------------------------------------------------
-[0m
-[ReportManager] Response status code: "200", status line: "HTTP/1.1 200 OK" @07-09-2025 22:14:28.0964 PM
-[ReportManager] Actual response status code "200" is successful (Between 200 and 299). @07-09-2025 22:14:28.0966 PM
-[ReportManager] Handle response; POST | Response Time: 1221ms. @07-09-2025 22:14:28.0989 PM
