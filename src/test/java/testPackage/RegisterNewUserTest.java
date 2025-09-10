@@ -3,14 +3,15 @@ package testPackage;
 
 import org.testng.annotations.Test;
 import pages.RegisterPage;
-import data.TestDataFactory;
+import utils.TestDataParser;
 import utils.UserData;
 
 import java.io.IOException;
-import java.util.List;
 
+@Test
 public class RegisterNewUserTest extends TestBase {
 
+    // Using SHAFT JSON test data directly
     @Test
     public void registerNewUserFromNormalMethod() {
         new RegisterPage(bot).navigateToRegisterPage()
@@ -23,19 +24,23 @@ public class RegisterNewUserTest extends TestBase {
         bot.driver.browser().and().assertThat().url().contains("account_created");
     }
 
-    // Using UserData class & Test data factory to hold and build user information
-
+    // Using UserData class & TestDataParser utility class to hold and build user information
     @Test
-    public void registerNewUserFromUserDataClass() throws IOException {
-       // UserData user = TestDataFactory.readJsonFromFile(testData, UserData.class);
-        List<UserData> users = TestDataFactory.readJsonFromFile(testData, UserData.class);
-        UserData user = users.get(0);
+    public void registerUserFromJsonUtilityClass() throws IOException {
+        UserData user = TestDataParser.loadObject(testData, UserData.class);
+        new RegisterPage(bot).navigateToRegisterPage().signUp(user.getName(), user.getEmail())
+                .completeRegisterForm(user);
+        bot.driver.browser().and().assertThat().url().contains("account_created");
+    }
+
+    // Using UserData class & Test data factory to hold and build user information from a JSON file path
+    @Test
+    public void registerNewUserFromJsonFilePath() throws IOException {
+        UserData user = TestDataParser.readJsonFromJsonDataPath("src/test/resources/testDataFiles/newUserData.json", UserData.class);
         System.out.println("RAW JSON: " + testData.getTestData(""));
         new RegisterPage(bot).navigateToRegisterPage()
                 .signUp(user.getName(), user.getEmail())
                 .completeRegisterForm(user);
         bot.driver.browser().and().assertThat().url().contains("account_created");
     }
-
-
 }

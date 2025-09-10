@@ -50,6 +50,7 @@ public class RegisterPage {
     /**
      * CRITICAL: Replace {timestamp} with actual timestamp to ensure unique email addresses.
      */
+    // 🔹 Replace placeholders like {timestamp}
     public static String generateUniqueEmail(String emailTemplate) {
         if (emailTemplate.contains("{timestamp}")) {
             long timestamp = System.currentTimeMillis();

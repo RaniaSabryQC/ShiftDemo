@@ -1,22 +1,18 @@
 {
-  "userData":[
-    {
-      "name": "John",
-      "email": "john.doe.{timestamp}@test.com",
-      "password": "123456",
-      "day": "5",
-      "month": "May",
-      "year": "2020",
-      "firstName": "John",
-      "lastName": "Doe",
-      "company": "Company",
-      "address1": "Address1",
-      "address2": "Address2",
-      "country": "Canada",
-      "state": "New York",
-      "city": "New York",
-      "zipcode": "10001",
-      "mobileNumber": "1234567890"
-    }
-  ]
+  "name": "John",
+  "email": "john.doe.{timestamp}@test.com",
+  "password": "123456",
+  "day": "5",
+  "month": "May",
+  "year": "2020",
+  "firstName": "John",
+  "lastName": "Doe",
+  "company": "Company",
+  "address1": "Address1",
+  "address2": "Address2",
+  "country": "Canada",
+  "state": "New York",
+  "city": "New York",
+  "zipcode": "10001",
+  "mobileNumber": "1234567890"
 }
